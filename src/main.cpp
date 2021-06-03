@@ -15,8 +15,8 @@ DallasTemperature sensors(&oneWire);
 
 const int RELAY_PINS[NUMBER_OF_SPUNDERS] = {7, 6, 5, 4};
 const int SENSOR_PINS[NUMBER_OF_SPUNDERS] = {0, 1, 2, 3};
-float DESIRED_VOLS[NUMBER_OF_SPUNDERS] = {1.0, 2.0, 3.0, 4.0};
 
+float DESIRED_VOLS[NUMBER_OF_SPUNDERS] = {2.0, 2.5, 3.0, 3.5};
 int stored_times[NUMBER_OF_SPUNDERS];
 
 struct Spunder
@@ -32,6 +32,7 @@ void setup()
   // start serial and spunders, set valves to closed.
   Serial.begin(9600);
   sensors.begin();
+  // assign an id, relay, sensor, carb setpoint, start timer for each Spunder.
   for (int i = 0; i < NUMBER_OF_SPUNDERS; i++)
   {
     spunder_arr[i].id = i + 1;
