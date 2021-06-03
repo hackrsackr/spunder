@@ -1,10 +1,3 @@
-// AUTOMATICALLY GENERATED FILE. PLEASE DO NOT MODIFY IT MANUALLY
-//
-// PIO Unified Debugger
-//
-// Documentation: https://docs.platformio.org/page/plus/debugging.html
-// Configuration: https://docs.platformio.org/page/projectconf/section_env_debug.html
-
 {
     "version": "0.2.0",
     "configurations": [
@@ -12,7 +5,7 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug",
-            "executable": "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/.pio/build/megaatmega2560/firmware.elf",
+            "executable": "/Users/robknighton/Documents/GitHub/spunder/spunder-1/.pio/build/megaatmega2560/firmware.elf",
             "projectEnvName": "megaatmega2560",
             "toolchainBinDir": "/Users/robknighton/.platformio/packages/toolchain-atmelavr/bin",
             "internalConsoleOptions": "openOnSessionStart",
@@ -25,7 +18,7 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (skip Pre-Debug)",
-            "executable": "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/.pio/build/megaatmega2560/firmware.elf",
+            "executable": "/Users/robknighton/Documents/GitHub/spunder/spunder-1/.pio/build/megaatmega2560/firmware.elf",
             "projectEnvName": "megaatmega2560",
             "toolchainBinDir": "/Users/robknighton/.platformio/packages/toolchain-atmelavr/bin",
             "internalConsoleOptions": "openOnSessionStart"
