@@ -1,0 +1,59 @@
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/include",
+                "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/src",
+                "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/.pio/libdeps/megaatmega2560/DallasTemperature",
+                "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/.pio/libdeps/megaatmega2560/OneWire",
+                "/Users/robknighton/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "/Users/robknighton/.platformio/packages/framework-arduino-avr/variants/mega",
+                "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/.pio/libdeps/megaatmega2560/estdlib/src",
+                "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "/Users/robknighton/.platformio/packages/tool-unity",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/include",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/src",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/.pio/libdeps/megaatmega2560/DallasTemperature",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/.pio/libdeps/megaatmega2560/OneWire",
+                    "/Users/robknighton/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "/Users/robknighton/.platformio/packages/framework-arduino-avr/variants/mega",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/SPUNDER/dev/struct_spund/.pio/libdeps/megaatmega2560/estdlib/src",
+                    "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "/Users/robknighton/.platformio/packages/tool-unity",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=50101",
+                "ARDUINO_AVR_MEGA2560",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega2560__",
+                ""
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "compilerPath": "/Users/robknighton/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atmega2560",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
