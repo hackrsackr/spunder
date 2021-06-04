@@ -2,31 +2,36 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
-#define NUMBER_OF_SPUNDERS 4
-#define SENSOR_RATING 30
+#define NUMBER_OF_SPUNDERS 4           // number of sensor/relay pairs
+#define SENSOR_RATING 30               // rating of tranducers in psi
 #define OFFSET 102                     // bits from 0v - .5v
 #define FULLSCALE 922                  // bits from .5v - 4.5v
-#define RELAY_OPEN HIGH
-#define ONE_WIRE_BUS 3
+#define RELAY_OPEN HIGH                // set relay open to HIGH
+#define ONE_WIRE_BUS 3                 // oneWire pin on arduino
 
-// Setup a oneWire instance & pass it to Dallas Temperature.
+// Setup a oneWire instance & pass it to Dallas Temperature
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
+// define relay and sensor pins on the arduino
 const int RELAY_PINS[NUMBER_OF_SPUNDERS] = {7, 6, 5, 4};
 const int SENSOR_PINS[NUMBER_OF_SPUNDERS] = {0, 1, 2, 3};
 
+// desired carbonation in vols co2, array to store times of last vent
 float DESIRED_VOLS[NUMBER_OF_SPUNDERS] = {2.0, 2.5, 3.0, 3.5};
 int stored_times[NUMBER_OF_SPUNDERS];
 
+// define Spunder
 struct Spunder
 {
   int id, RELAY_PIN, SENSOR_PIN, stored_time, vent;
   float vols_setpoint, vols_value, psi_setpoint, psi_value, tempC, tempF;
 };
 
+// array of spunders
 Spunder spunder_arr[NUMBER_OF_SPUNDERS];
 
+// setup
 void setup()
 {
   // start serial and spunders, set valves to closed.
@@ -46,6 +51,7 @@ void setup()
   }
 }
 
+// get temperature in celsius
 float get_tempC()
 {
   sensors.requestTemperatures();
@@ -53,6 +59,7 @@ float get_tempC()
   return tempC;
 }
 
+// get temperature in fahrenheit
 float get_tempF()
 {
   sensors.requestTemperatures();
@@ -60,24 +67,28 @@ float get_tempF()
   return tempF;
 }
 
+// read raw data on SENSOR_PIN, return value in pounds per square inch
 float get_psi_value(int SENSOR_PIN)
 {
   float psi_value = (analogRead(SENSOR_PIN) - OFFSET) * SENSOR_RATING / float((FULLSCALE - OFFSET));
   return psi_value;
 }
 
+// derive psi setpoint for desired carbonation in vols co2
 float get_psi_setpoint(float vol_setpoint, float tempF)
 {
   float psi_setpoint = (-16.669 - (.0101059 * tempF)) + (.00116512 * (tempF * tempF)) + (.173354 * tempF * vol_setpoint) + (4.24267 * vol_setpoint) - (.0684226 * (vol_setpoint * vol_setpoint));
   return psi_setpoint;
 }
 
+// derive the current vols co2 based on the psi value and setpoint
 float get_vols_value(float psi_value, float psi_setpoint, float vols_setpoint)
 {
   float vols_value = float(psi_value / psi_setpoint) * vols_setpoint;
   return vols_value;
 }
 
+// get the time since last vent in minutes
 int get_vent_value(float psi_value, float psi_setpoint, int stored_time, int RELAY_PIN)
 {
   int vent;
@@ -96,8 +107,9 @@ int get_vent_value(float psi_value, float psi_setpoint, int stored_time, int REL
   return vent;
 }
 
+// loop
 void loop()
-{
+
   Serial.println("{");
   for (int i = 0; i < NUMBER_OF_SPUNDERS; i++)
   {
