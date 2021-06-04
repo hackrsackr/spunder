@@ -109,7 +109,7 @@ int get_vent_value(float psi_value, float psi_setpoint, int stored_time, int REL
 
 // loop
 void loop()
-
+{
   Serial.println("{");
   for (int i = 0; i < NUMBER_OF_SPUNDERS; i++)
   {
