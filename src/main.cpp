@@ -107,6 +107,24 @@ void loop()
     {
       spunder_arr[i].vent = (millis() - spunder_arr[i].stored_time) / 60000;
     }
+    
+    // Serial << "\"" << i << "\": {" 
+    // Serial << "\"psi target\": " << spunder_arr[i].psi_setpoint << ", "
+    // Serial << "\"actual psi\": " << spunder_arr[i].psi_value << ", "
+    // Serial << "\"vol target\": " << spunder_arr[i].vols_setpoint << ", "
+    // Serial << "\"actual vols\": " << spunder_arr[i].vols_value << ", "
+    // Serial << "\"temperature\": " << spunder_arr[i].tempC << ", "
+    // Serial << "\"since vent\": " << spunder_arr[i].vent << ", "
+    // if (i != (NUMBER_OF_SPUNDERS -1))
+    // {
+    //   Serial << "}, " << endl;
+    // else
+    // {
+    //  Serial << "}" << endl;
+    //  Serial << "}" << endl;
+    // }
+
+
     Serial.print("\"");
     Serial.print(i + 1);
     Serial.print("\": ");
