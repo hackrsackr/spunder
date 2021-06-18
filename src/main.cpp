@@ -61,9 +61,11 @@ public:
 
   int get_vent_value() { return (millis() - stored_time) / 60000; }
 };
+
+// Create an array of Spunders
 Spunder spunder_arr[NUMBER_OF_SPUNDERS];
 
-// start serial and spunders, set valves to closed.
+// Start serial and spunders, set valves to closed.
 void setup()
 {
   Serial.begin(9600);
@@ -82,10 +84,12 @@ void setup()
   }
 }
 
+// Get Data -> print it out. 
 void loop()
 {
   sensors.requestTemperatures();
   Serial.println("{");
+
   for (int i = 0; i < NUMBER_OF_SPUNDERS; i++)
   {
     spunder_arr[i].tempC = spunder_arr[i].get_tempC();
