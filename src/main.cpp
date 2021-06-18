@@ -55,11 +55,11 @@ public:
 
   float get_psi_value() { return (analogRead(sensor_pin) - sensor_offset) * sensor_rating / float(sensor_fullscale - sensor_offset); }
 
-  float get_psi_setpoint(float vols_setpoint, float tempF) { return (-16.669 - (.0101059 * tempF)) + (.00116512 * (tempF * tempF)) + (.173354 * tempF * vols_setpoint) + (4.24267 * vols_setpoint) - (.0684226 * (vols_setpoint * vols_setpoint)); }
+  float get_psi_setpoint() { return (-16.669 - (.0101059 * tempF)) + (.00116512 * (tempF * tempF)) + (.173354 * tempF * vols_setpoint) + (4.24267 * vols_setpoint) - (.0684226 * (vols_setpoint * vols_setpoint)); }
 
-  float get_vols_value(float psi_value, float psi_setpoint, float vols_setpoint) { return (psi_value / psi_setpoint) * vols_setpoint; }
+  float get_vols_value() { return (psi_value / psi_setpoint) * vols_setpoint; }
 
-  int get_vent_value(float psi_value, float psi_setpoint, int stored_time, int relay_pin) { return (millis() - stored_time) / 60000; }
+  int get_vent_value() { return (millis() - stored_time) / 60000; }
 };
 Spunder spunder_arr[NUMBER_OF_SPUNDERS];
 
@@ -90,10 +90,10 @@ void loop()
   {
     spunder_arr[i].tempC = spunder_arr[i].get_tempC();
     spunder_arr[i].tempF = spunder_arr[i].get_tempF();
-    spunder_arr[i].psi_setpoint = spunder_arr[i].get_psi_setpoint(spunder_arr[i].vols_setpoint, spunder_arr[i].tempF);
+    spunder_arr[i].psi_setpoint = spunder_arr[i].get_psi_setpoint();
     spunder_arr[i].psi_value = spunder_arr[i].get_psi_value();
-    spunder_arr[i].vols_value = spunder_arr[i].get_vols_value(spunder_arr[i].psi_value, spunder_arr[i].psi_setpoint, spunder_arr[i].vols_setpoint);
-    spunder_arr[i].vent = spunder_arr[i].get_vent_value(spunder_arr[i].psi_value, spunder_arr[i].psi_setpoint, spunder_arr[i].stored_time, spunder_arr[i].relay_pin);
+    spunder_arr[i].vols_value = spunder_arr[i].get_vols_value();
+    spunder_arr[i].vent = spunder_arr[i].get_vent_value();
 
     if (spunder_arr[i].psi_value > spunder_arr[i].psi_setpoint)
     {
@@ -107,8 +107,8 @@ void loop()
     {
       spunder_arr[i].vent = (millis() - spunder_arr[i].stored_time) / 60000;
     }
-    
-    // Serial << "\"" << i << "\": {" 
+
+    // Serial << "\"" << i << "\": {"
     // Serial << "\"psi target\": " << spunder_arr[i].psi_setpoint << ", "
     // Serial << "\"actual psi\": " << spunder_arr[i].psi_value << ", "
     // Serial << "\"vol target\": " << spunder_arr[i].vols_setpoint << ", "
@@ -123,7 +123,6 @@ void loop()
     //  Serial << "}" << endl;
     //  Serial << "}" << endl;
     // }
-
 
     Serial.print("\"");
     Serial.print(i + 1);
