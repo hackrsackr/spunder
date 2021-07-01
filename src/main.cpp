@@ -32,20 +32,20 @@ float DESIRED_VOLS[NUMBER_OF_SPUNDERS] = {4.0, 4.0, 4.0, 4.0}; // target carbona
 class Spunder
 {
 public:
-  int id;                     // Spunder ID number
-  int sensor_pin;             // Arduino pin of the transducer
-  int sensor_rating = 60;     // Pressure rating of the transducer in PSI
-  int sensor_offset = 102;    // Bits from 0v - .5v
-  int sensor_fullscale = 922; // Bits from .5v - 5v
-  int relay_pin;              // Arduino pin of the spunder valve relay
-  int stored_time;            // Time of last mins_since_vent
-  int mins_since_vent;        // Time since last vent
-  float vols_setpoint;        // Desired co2 in vols
-  float vols_value;           // Actual co2 in vols
-  float psi_setpoint;         // PSI target
-  float psi_value;            // Actual PSI
-  float tempC;                // Temp in Celsius
-  float tempF;                // Temp in Fahrenheit
+  int id;                                      // Spunder ID number
+  int sensor_pin;                              // Arduino pin of the transducer
+  int sensor_rating = 60;                      // Pressure rating of the transducer in PSI
+  int sensor_offset = 102;                     // Bits from 0v - .5v
+  int sensor_fullscale = 1024 - sensor_offset; // Bits from .5v - 5v
+  int relay_pin;                               // Arduino pin of the spunder valve relay
+  int stored_time;                             // Time of last mins_since_vent
+  int mins_since_vent;                         // Time since last vent
+  float vols_setpoint;                         // Desired co2 in vols
+  float vols_value;                            // Actual co2 in vols
+  float psi_setpoint;                          // PSI target
+  float psi_value;                             // Actual PSI
+  float tempC;                                 // Temp in Celsius
+  float tempF;                                 // Temp in Fahrenheit
 
   void init_vols_setpoint(float vs) { vols_setpoint = vs; }
 
