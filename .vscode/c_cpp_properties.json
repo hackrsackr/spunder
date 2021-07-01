@@ -1,20 +1,22 @@
-//
-// !!! WARNING !!! AUTO-GENERATED FILE!
-// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
-// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
-//
 {
     "configurations": [
         {
             "name": "PlatformIO",
             "includePath": [
-                "/Users/robknighton/spunder/include",
-                "/Users/robknighton/spunder/src",
-                "/Users/robknighton/spunder/.pio/libdeps/megaatmega2560/DallasTemperature",
-                "/Users/robknighton/spunder/.pio/libdeps/megaatmega2560/OneWire",
+                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/include",
+                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/src",
+                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/Streaming",
+                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/DallasTemperature",
+                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/OneWire",
                 "/Users/robknighton/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/Users/robknighton/.platformio/packages/framework-arduino-avr/variants/mega",
-                "/Users/robknighton/spunder/.pio/libdeps/megaatmega2560/estdlib/src",
+                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/estdlib/src",
+                "/Users/robknighton/.platformio/lib/Adafruit BusIO",
+                "/Users/robknighton/.platformio/lib/Adafruit GFX Library",
+                "/Users/robknighton/.platformio/lib/Adafruit SSD1306",
+                "/Users/robknighton/.platformio/lib/ESP Async WebServer/src",
+                "/Users/robknighton/.platformio/lib/LoRa/src",
+                "/Users/robknighton/.platformio/lib/TFT_eSPI",
                 "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                 "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
@@ -26,13 +28,20 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/Users/robknighton/spunder/include",
-                    "/Users/robknighton/spunder/src",
-                    "/Users/robknighton/spunder/.pio/libdeps/megaatmega2560/DallasTemperature",
-                    "/Users/robknighton/spunder/.pio/libdeps/megaatmega2560/OneWire",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/include",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/src",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/Streaming",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/DallasTemperature",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/OneWire",
                     "/Users/robknighton/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/Users/robknighton/.platformio/packages/framework-arduino-avr/variants/mega",
-                    "/Users/robknighton/spunder/.pio/libdeps/megaatmega2560/estdlib/src",
+                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/estdlib/src",
+                    "/Users/robknighton/.platformio/lib/Adafruit BusIO",
+                    "/Users/robknighton/.platformio/lib/Adafruit GFX Library",
+                    "/Users/robknighton/.platformio/lib/Adafruit SSD1306",
+                    "/Users/robknighton/.platformio/lib/ESP Async WebServer/src",
+                    "/Users/robknighton/.platformio/lib/LoRa/src",
+                    "/Users/robknighton/.platformio/lib/TFT_eSPI",
                     "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                     "/Users/robknighton/.platformio/packages/framework-arduino-avr/libraries/SPI/src",

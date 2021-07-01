@@ -6,17 +6,19 @@
  * Board - Arduino Mega
  * ADC - 10 bit (0 - 1024)
  * Transducer - 3 wires 5v, ground, signal
- * Relay      - 2 wires switchleg and ground 
+ * Relay      - 2 wires switchleg and ground
+ * 
+ * 7/1/21 added streaming library for more concise output 
 */
 
 #include <Arduino.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
-using namespace std;
+#include <Streaming.h>
 
 #define NUMBER_OF_SPUNDERS 4
 #define RELAY_OPEN HIGH
-#define ONE_WIRE_BUS 3
+#define ONE_WIRE_BUS 21
 
 // Setup a oneWire instance & pass it to Dallas Temperature.
 OneWire oneWire(ONE_WIRE_BUS);
@@ -25,7 +27,7 @@ DallasTemperature sensors(&oneWire);
 // Arduino pins and desired carbonation in vols.
 const int SENSOR_PINS[NUMBER_OF_SPUNDERS] = {0, 1, 2, 3};
 const int RELAY_PINS[NUMBER_OF_SPUNDERS] = {4, 5, 6, 7};
-float DESIRED_VOLS[NUMBER_OF_SPUNDERS] = {1.0, 2.0, 3.0, 4.0};
+float DESIRED_VOLS[NUMBER_OF_SPUNDERS] = {4.0, 4.0, 4.0, 4.0};
 
 class Spunder
 {
@@ -34,11 +36,11 @@ public:
   const static int sensor_offset = 102;    // Bits from 0v - .5v
   const static int sensor_fullscale = 922; // Bits from .5v - 5v
 
-  int id;          // Spunder ID number
-  int sensor_pin;  // Arduino pin of the transducer
-  int relay_pin;   // Arduino pin of the spunder valve relay
-  int stored_time; // Time of last vent
-  int vent;        // Time since last vent
+  int id;           // Spunder ID number
+  int sensor_pin;   // Arduino pin of the transducer
+  int relay_pin;    // Arduino pin of the spunder valve relay
+  int stored_time;  // Time of last elapsed_time
+  int elapsed_time; // Time since last elapsed_time
 
   float vols_setpoint; // Desired co2 in vols
   float vols_value;    // Actual co2 in vols
@@ -84,11 +86,11 @@ void setup()
   }
 }
 
-// Get Data -> print it out. 
+// Get Data -> print it out.
 void loop()
 {
   sensors.requestTemperatures();
-  Serial.println("{");
+  Serial << ("{") << endl;
 
   for (int i = 0; i < NUMBER_OF_SPUNDERS; i++)
   {
@@ -97,7 +99,7 @@ void loop()
     spunder_arr[i].psi_setpoint = spunder_arr[i].get_psi_setpoint();
     spunder_arr[i].psi_value = spunder_arr[i].get_psi_value();
     spunder_arr[i].vols_value = spunder_arr[i].get_vols_value();
-    spunder_arr[i].vent = spunder_arr[i].get_vent_value();
+    spunder_arr[i].elapsed_time = spunder_arr[i].get_vent_value();
 
     if (spunder_arr[i].psi_value > spunder_arr[i].psi_setpoint)
     {
@@ -105,59 +107,28 @@ void loop()
       delay(100);
       digitalWrite(spunder_arr[i].relay_pin, !RELAY_OPEN);
       spunder_arr[i].stored_time = millis();
-      spunder_arr[i].vent = 0;
+      spunder_arr[i].elapsed_time = 0;
     }
     else
     {
-      spunder_arr[i].vent = (millis() - spunder_arr[i].stored_time) / 60000;
+      spunder_arr[i].elapsed_time = (millis() - spunder_arr[i].stored_time) / 60000;
     }
 
-    // Serial << "\"" << i << "\": {"
-    // Serial << "\"psi target\": " << spunder_arr[i].psi_setpoint << ", "
-    // Serial << "\"actual psi\": " << spunder_arr[i].psi_value << ", "
-    // Serial << "\"vol target\": " << spunder_arr[i].vols_setpoint << ", "
-    // Serial << "\"actual vols\": " << spunder_arr[i].vols_value << ", "
-    // Serial << "\"temperature\": " << spunder_arr[i].tempC << ", "
-    // Serial << "\"since vent\": " << spunder_arr[i].vent << ", "
-    // if (i != (NUMBER_OF_SPUNDERS -1))
-    // {
-    //   Serial << "}, " << endl;
-    // else
-    // {
-    //  Serial << "}" << endl;
-    //  Serial << "}" << endl;
-    // }
-
-    Serial.print("\"");
-    Serial.print(i + 1);
-    Serial.print("\": ");
-    Serial.print("{");
-    Serial.print("\"psi target\": ");
-    Serial.print(spunder_arr[i].psi_setpoint);
-    Serial.print(", ");
-    Serial.print("\"psi\": ");
-    Serial.print(spunder_arr[i].psi_value);
-    Serial.print(", ");
-    Serial.print("\"vol target\": ");
-    Serial.print(spunder_arr[i].vols_setpoint);
-    Serial.print(", ");
-    Serial.print("\"vols\": ");
-    Serial.print(spunder_arr[i].vols_value);
-    Serial.print(", ");
-    Serial.print("\"temp\": ");
-    Serial.print(spunder_arr[i].tempC);
-    Serial.print(", ");
-    Serial.print("\"time since vent\": ");
-    Serial.print(spunder_arr[i].vent);
-
+    Serial << "\"" << spunder_arr[i].id << "\": {" << endl;
+    Serial << "\"psi target\" : " << spunder_arr[i].psi_setpoint << ", " << endl;
+    Serial << "\"actual psi\" : " << spunder_arr[i].psi_value << ", " << endl;
+    Serial << "\"vol target\" : " << spunder_arr[i].vols_setpoint << ", " << endl;
+    Serial << "\"actual vols\" : " << spunder_arr[i].vols_value << ", " << endl; 
+    Serial << "\"temperature\" : " << spunder_arr[i].tempC << ", " << endl;
+    Serial << "\"elapsed_time\" : " << spunder_arr[i].elapsed_time;
     if (i != (NUMBER_OF_SPUNDERS - 1))
     {
-      Serial.println("}, ");
+      Serial << " }, " << endl;
     }
     else
     {
-      Serial.println("}");
-      Serial.println("}");
+      Serial << " }" << endl;
+      Serial << "}" << endl;
     }
   }
   delay(5000);
