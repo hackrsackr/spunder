@@ -122,6 +122,7 @@ void loop()
     if (i != (NUMBER_OF_SPUNDERS - 1))
     {
       Serial << " }, " << endl;
+      Serial << " " << endl;
     }
     else
     {
