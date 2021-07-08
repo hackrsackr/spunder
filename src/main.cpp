@@ -112,7 +112,7 @@ void loop()
       spunder_arr[i].mins_since_vent = (millis() - spunder_arr[i].stored_time) / 60000;
     }
 
-    Serial << "\"" << spunder_arr[i].id << "\": {" << endl;
+    Serial << "\"spunder" << spunder_arr[i].id << "\": {" << endl;
     Serial << "\"psi target\" : " << spunder_arr[i].psi_setpoint << ", " << endl;
     Serial << "\"actual psi\" : " << spunder_arr[i].psi_value << ", " << endl;
     Serial << "\"vol target\" : " << spunder_arr[i].vols_setpoint << ", " << endl;
