@@ -1,16 +1,21 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
 {
     "configurations": [
         {
             "name": "PlatformIO",
             "includePath": [
-                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/include",
-                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/src",
-                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/Streaming",
-                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/DallasTemperature",
-                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/OneWire",
+                "/Users/robknighton/Desktop/SPUNDER/include",
+                "/Users/robknighton/Desktop/SPUNDER/src",
+                "/Users/robknighton/Desktop/SPUNDER/.pio/libdeps/megaatmega2560/Streaming",
+                "/Users/robknighton/Desktop/SPUNDER/.pio/libdeps/megaatmega2560/DallasTemperature",
+                "/Users/robknighton/Desktop/SPUNDER/.pio/libdeps/megaatmega2560/OneWire",
                 "/Users/robknighton/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/Users/robknighton/.platformio/packages/framework-arduino-avr/variants/mega",
-                "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/estdlib/src",
+                "/Users/robknighton/Desktop/SPUNDER/.pio/libdeps/megaatmega2560/estdlib/src",
                 "/Users/robknighton/.platformio/lib/Adafruit BusIO",
                 "/Users/robknighton/.platformio/lib/Adafruit GFX Library",
                 "/Users/robknighton/.platformio/lib/Adafruit SSD1306",
@@ -28,14 +33,14 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/include",
-                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/src",
-                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/Streaming",
-                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/DallasTemperature",
-                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/OneWire",
+                    "/Users/robknighton/Desktop/SPUNDER/include",
+                    "/Users/robknighton/Desktop/SPUNDER/src",
+                    "/Users/robknighton/Desktop/SPUNDER/.pio/libdeps/megaatmega2560/Streaming",
+                    "/Users/robknighton/Desktop/SPUNDER/.pio/libdeps/megaatmega2560/DallasTemperature",
+                    "/Users/robknighton/Desktop/SPUNDER/.pio/libdeps/megaatmega2560/OneWire",
                     "/Users/robknighton/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/Users/robknighton/.platformio/packages/framework-arduino-avr/variants/mega",
-                    "/Users/robknighton/Documents/PlatformIO/Projects/spunder-1/.pio/libdeps/megaatmega2560/estdlib/src",
+                    "/Users/robknighton/Desktop/SPUNDER/.pio/libdeps/megaatmega2560/estdlib/src",
                     "/Users/robknighton/.platformio/lib/Adafruit BusIO",
                     "/Users/robknighton/.platformio/lib/Adafruit GFX Library",
                     "/Users/robknighton/.platformio/lib/Adafruit SSD1306",
